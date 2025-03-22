@@ -30,28 +30,27 @@ function randomElementInArray(array){
 }
 
 function result(){
-    let newStory = "";
+    let newStory = storyText;
     let xItem = randomElementInArray(insertX);
     let yItem = randomElementInArray(insertY);
     let zItem = randomElementInArray(insertZ);
     let userName = document.getElementById("customname").value;
-    const usTemp = document.getElementById("us").checked;
-    const ukTemp = document.getElementById("uk").checked;
+    const us = document.getElementById("us").checked;
+    const uk = document.getElementById("uk").checked;
 
+    newStory = newStory.replaceAll(':insertx:', xItem);
+    newStory = newStory.replaceAll(':inserty:', yItem);
+    newStory = newStory.replaceAll(':insertz:', zItem);
 
-    if(usTemp){
-        if(userName){
-            newStory = `It was 94 fahrenheit outside, so ${xItem} went for a walk. When they got to ${yItem}, they stared in horror for a few moments, then ${zItem}. ${userName} saw the whole thing, but was not surprised — ${xItem} weighs 300 pounds, and it was a hot day.`;
-        } else {
-            newStory = `It was 94 fahrenheit outside, so ${xItem} went for a walk. When they got to ${yItem}, they stared in horror for a few moments, then ${zItem}. Bob saw the whole thing, but was not surprised — ${xItem} weighs 300 pounds, and it was a hot day.`;            
-        }
-    } else if(ukTemp){
-        if(userName){
-            newStory = `It was ${Math.round((94 - 32) * 5/9)} centigrade outside, so ${xItem} went for a walk. When they got to ${yItem}, they stared in horror for a few moments, then ${zItem}. ${userName} saw the whole thing, but was not surprised — ${xItem} weighs ${Math.round(300/14)} stone, and it was a hot day.`;
-        } else {
-            newStory = `It was ${Math.round((94 - 32) * 5/9)} centigrade outside, so ${xItem} went for a walk. When they got to ${yItem}, they stared in horror for a few moments, then ${zItem}. Bob saw the whole thing, but was not surprised — ${xItem} weighs ${Math.round(300/14)}, and it was a hot day.`;         
-        }
+    if(userName){
+        newStory = newStory.replaceAll('Bob', userName);
     }
+    
+    if(uk){
+        newStory = newStory.replace('94 fahrenheit', Math.round((94 - 32) * 5/9) + " centigrade");
+        newStory = newStory.replace('300 pounds', Math.round(300/14) + " stone");
+    }
+
     story.textContent = newStory;
     story.style.visibility = "initial";
 }
