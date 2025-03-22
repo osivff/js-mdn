@@ -1,9 +1,9 @@
 const customName = document.getElementById("customname");
 const randomizeButton = document.querySelector(".randomize");
-const usTemp = document.getElementById("us");
-const ukTemp = document.getElementById("uk");
 let story = document.querySelector(".story");
+
 // Text variables
+
 let storyText = "It was 94 fahrenheit outside, so :insertx: went for a walk. When they got to :inserty:, they stared in horror for a few moments, then :insertz:. Bob saw the whole thing, but was not surprised — :insertx: weighs 300 pounds, and it was a hot day."
 let insertX = [
     "Willy the Goblin",
@@ -22,20 +22,11 @@ let insertZ = [
 ];
 
 
+//Logic
 
 function randomElementInArray(array){
     let randomNumber = Number(Math.floor(Math.random() * array.length));
     return array[randomNumber];
-}
-
-function toCelsius(num){
-    let formula = (num - 32) * 5/9;
-    return Number(formula.toFixed(2));
-}
-
-function toFahrenheit(num){
-    let formula = (num * 9/5) + 32;
-    return Number(formula.toFixed(2));
 }
 
 function result(){
@@ -43,13 +34,28 @@ function result(){
     let xItem = randomElementInArray(insertX);
     let yItem = randomElementInArray(insertY);
     let zItem = randomElementInArray(insertZ);
+    let userName = document.getElementById("customname").value;
+    const usTemp = document.getElementById("us").checked;
+    const ukTemp = document.getElementById("uk").checked;
 
-    newStory = `It was 94 fahrenheit outside, so ${xItem} went for a walk. When they got to ${yItem}, they stared in horror for a few moments, then ${zItem}. Bob saw the whole thing, but was not surprised — ${xItem} weighs 300 pounds, and it was a hot day.`
+
+    if(usTemp){
+        if(userName){
+            newStory = `It was 94 fahrenheit outside, so ${xItem} went for a walk. When they got to ${yItem}, they stared in horror for a few moments, then ${zItem}. ${userName} saw the whole thing, but was not surprised — ${xItem} weighs 300 pounds, and it was a hot day.`;
+        } else {
+            newStory = `It was 94 fahrenheit outside, so ${xItem} went for a walk. When they got to ${yItem}, they stared in horror for a few moments, then ${zItem}. Bob saw the whole thing, but was not surprised — ${xItem} weighs 300 pounds, and it was a hot day.`;            
+        }
+    } else if(ukTemp){
+        if(userName){
+            newStory = `It was ${Math.round((94 - 32) * 5/9)} centigrade outside, so ${xItem} went for a walk. When they got to ${yItem}, they stared in horror for a few moments, then ${zItem}. ${userName} saw the whole thing, but was not surprised — ${xItem} weighs ${Math.round(300/14)} stone, and it was a hot day.`;
+        } else {
+            newStory = `It was ${Math.round((94 - 32) * 5/9)} centigrade outside, so ${xItem} went for a walk. When they got to ${yItem}, they stared in horror for a few moments, then ${zItem}. Bob saw the whole thing, but was not surprised — ${xItem} weighs ${Math.round(300/14)}, and it was a hot day.`;         
+        }
+    }
     story.textContent = newStory;
     story.style.visibility = "initial";
 }
 
-
-// Text
+// Add event listener
 
 randomizeButton.addEventListener("click", result);
