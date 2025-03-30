@@ -5,17 +5,20 @@ const btn = document.querySelector('button');
 const overlay = document.querySelector('.overlay');
 const imgArr = ['pic1.jpg', 'pic2.jpg', 'pic3.jpg', 'pic4.jpg', 'pic5.jpg'];
 const imgTxt = {
-    one: 'Weird and old looking thing',
-    two: 'Purple and white flowers',
-    three: 'Ancient egiptian drawings',
-    four: 'Big butterfly sitting on a leaf'
+    1: 'Closeup of human eye',
+    2: 'Weird and old looking thing',
+    3: 'Purple and white flowers',
+    4: 'Ancient egiptian drawings',
+    5: 'Big butterfly sitting on a leaf'
 };
 
-for(let img of imgArr){
+for(let i  = 0; i <= imgArr.length - 1; i++) {
     const newImage = document.createElement('img');
-    newImage.setAttribute('src', `images/${img}`);
+    newImage.setAttribute('src', `images/${imgArr[i]}`);
+    newImage.setAttribute('alt', `${imgTxt[i + 1]}`);
     thumbBar.appendChild(newImage);
 }
+
 
 
 // newImage.setAttribute('alt', xxx);
