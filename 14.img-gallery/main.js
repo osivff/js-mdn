@@ -20,7 +20,6 @@ for(let i  = 0; i <= imgArr.length - 1; i++) {
 }
 
 thumbBar.addEventListener('click', (e) => {
-    console.log(e.target.src);
     displayedImage.setAttribute('src', `${e.target.src}`);
     displayedImage.setAttribute('alt', `${e.target.alt}`);
 });
