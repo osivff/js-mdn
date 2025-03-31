@@ -11,3 +11,11 @@ const person = {
         console.log(`Hi I am ${this.name.first}`);
     }
 };
+
+function logProperty(propertyName){
+    console.log(person[propertyName]);
+}
+
+person.farewell = function(){
+    console.log("Bye everyone!");
+}
