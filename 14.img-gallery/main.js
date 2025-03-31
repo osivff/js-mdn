@@ -27,4 +27,10 @@ thumbBar.addEventListener('click', (e) => {
 
 
 
-/* Wiring up the Darken/Lighten button */
+btn.addEventListener('click', () => {
+    if(overlay.style.backgroundColor === 'rgba(0, 0, 0, 0.5)'){
+        overlay.style.backgroundColor = 'rgba(0,0,0,0)';
+    } else {
+        overlay.style.backgroundColor = 'rgba(0,0,0,0.5)';
+    }
+});
