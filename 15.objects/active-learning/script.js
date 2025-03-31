@@ -19,3 +19,7 @@ function logProperty(propertyName){
 person.farewell = function(){
     console.log("Bye everyone!");
 }
+
+const myDataName = "height";
+const myDataValue = "1.75m";
+person[myDataName] = myDataValue;
