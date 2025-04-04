@@ -11,3 +11,5 @@ link.href = "https://developer.mozilla.org";
 para.textContent = "We hoped you enjoyed the ride.";
 sect.appendChild(para);
 linkPara.appendChild(text);
+
+sect.removeChild(linkPara);
