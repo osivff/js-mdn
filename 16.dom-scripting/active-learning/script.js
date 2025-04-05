@@ -11,5 +11,11 @@ link.href = "https://developer.mozilla.org";
 para.textContent = "We hoped you enjoyed the ride.";
 sect.appendChild(para);
 linkPara.appendChild(text);
+// sect.removeChild(linkPara);
 
-sect.removeChild(linkPara);
+//styling elements
+para.style.color = 'white';
+para.style.backgroundColor = 'black';
+para.style.padding = '2em';
+para.style.width = '250px';
+para.textAlign = 'center';
