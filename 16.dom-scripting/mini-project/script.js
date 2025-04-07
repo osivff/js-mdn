@@ -16,11 +16,13 @@ function addItem(){
     displayItem.appendChild(deleteButton);
     list.appendChild(displayItem);
     preview.appendChild(list);
+    item.focus();
 
     deleteButton.addEventListener("click", () => {
         list.removeChild(displayItem);
     });
 }
+
 
 submit.addEventListener("click", addItem);
 submit.addEventListener("click", () => {
