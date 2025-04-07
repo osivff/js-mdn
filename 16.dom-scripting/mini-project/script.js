@@ -5,9 +5,9 @@ const list = document.createElement('ul');
 
 
 function addItem(){
-    const deleteButton = document.createElement('button');
     const itemValue = item.value;
     const displayItem = document.createElement('li');
+    const deleteButton = document.createElement('button');
     
     deleteButton.setAttribute('class', 'delete');
     displayItem.textContent = itemValue;
@@ -20,8 +20,9 @@ function addItem(){
     deleteButton.addEventListener("click", () => {
         list.removeChild(displayItem);
     });
-
 }
 
-
 submit.addEventListener("click", addItem);
+submit.addEventListener("click", () => {
+    item.value = '';
+})
